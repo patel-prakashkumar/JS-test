@@ -52,7 +52,13 @@ async function fetchMoviesJSON() {
       this.name = name;
       this.price = price;
     }
+  logProduct(){
+    return `${this.name} + cost ${this.price} kr.`
+  }
   }
 
   const table = new Product('table', 1200);
+
+console.log(table.logProduct());
+
   
