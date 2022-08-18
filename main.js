@@ -1,4 +1,5 @@
-
+// Write a function that logs to the console numbers 1 to 100.
+//
 function numberRander100() {
   for (let i = 1; i <= 100; i++) {
 
@@ -12,18 +13,17 @@ function numberRander100() {
     console.log(i);
   }
 }
-
 numberRander100()
 
 
 // Main theme: DOM manipulation
-// image Url  https://www.prosa.dk/fileadmin/_processed_/f/7/csm_HYF_ID_FB_EVENT_686c1dc718.png
+// image Url  ://www.prosa.dk/fileadmin/_processed_/f/7/csm_HYF_ID_FB_EVENT_686httpsc1dc718.png
+// the button is clicked, insert an <img> tag to the html with a random image
 
 const btn = document.createElement('button');
 btn.innerHTML = "Click Me To Create Image";
 document.body.appendChild(btn);
 btn.addEventListener('click', () => {
-  const randNumber = Math.floor((Math.random() * 10) + 1);
   const img = document.createElement('img');
   img.classList.add("mystyle");
   img.setAttribute("src", "https://www.prosa.dk/fileadmin/_processed_/f/7/csm_HYF_ID_FB_EVENT_686c1dc718.png")
@@ -31,21 +31,25 @@ btn.addEventListener('click', () => {
 })
 
 // Main theme: Async API calls
+// Display thefirst_nameof the first three users inthe DOM
 
 
 const url = "https://reqres.in/api/users"
-async function fetchMoviesJSON() {
+async function fetchUser() {
   const response = await fetch(url);
-  const data = await response.json();
-  return data;
-}
-fetchMoviesJSON().then(data => {
-  console.log(data)
+  const result = await response.json();
+  console.log(result)
+  const firstName = result.data.map(element => element.first_name)
+  return firstName.slice(0,3);
+  };
+  
+fetchUser().then(name=> {
+  console.log(name)
 
 });
 
 
-// create class
+// create class with 1 method
 
 class Product {
   constructor(name, price) {
@@ -53,11 +57,9 @@ class Product {
     this.price = price;
   }
   logProduct() {
-    return `${this.name} + cost ${this.price} kr.`
+    return `${this.name} cost ${this.price} kr.`
   }
 }
-
 const table = new Product('table', 1200);
-
 console.log(table.logProduct());
 
